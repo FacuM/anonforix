@@ -4,10 +4,27 @@
  include 'config.php';
  include 'top.php';
  include 'connect.php';
- if ( ($_POST['username'] == NULL || $_POST['username'] == '') ) {
-	 echo "<center>Failure.</center>";
+ if ( ( $_POST['username'] == NULL || $_POST['username'] == '' ) || ( $_POST['password'] == NULL || $_POST['password'] == '' ) || ( $_POST['mail'] == NULL || $_POST['mail'] == '' ) || ( $_POST['pin'] == NULL || $_POST['pin'] == '' ) ) {
+	 echo "
+	 <center>
+	  <p>You must fill all the fields before you continue.</p>
+	  <p>Please go back and try again.</p>
+	  <form method='post' action='install_1.php' >
+ 	   <input type='submit' value='Go back' >
+	  </form>
+	 </center>";
  } else {
-  echo "<center>
+  if ( !is_numeric($_POST['pin']) ) { 
+   echo "
+	 <center>
+	  <p>The PIN must be a numeric value.</p>
+	  <p>Please go back and try again.</p>
+	  <form method='post' action='install_1.php' >
+ 	   <input type='submit' value='Go back' >
+	  </form>
+	 </center>";
+  } else {
+      echo "<center>
  <form method='post' action='install_2.php' >
  <p>Okay... this is what we've got: </p>
  <table>
@@ -39,5 +56,6 @@
  </table>
  </form>
  ";
+  }
  }
 ?>
