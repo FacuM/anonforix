@@ -2,8 +2,8 @@
  // Installation script for Anonforix
  $pageinfo = array ('Anonforix', 'Installation');
  $debugging = true;
- include 'config.php';
- include 'top.php';
+ include '../config.php';
+ include '../top.php';
  echo "
  <center>
   <h3>Welcome to the <b>Anonforix</b> installation wizard!</h3>
@@ -37,7 +37,7 @@
  </center>
  <hr>
  <center>";
- include 'connectdbg.php';
+ include '../connectdbg.php';
  echo "</center>";
  if ($err != 0) {
 	 echo "<p><b>Status: <span style='color: red' >Not passed!</span></b> Please correct the errors shown above and try again.</p>"; 
@@ -47,5 +47,5 @@
 	  <input type='submit' value='Continue' >
 	 </form>";
  }
- include 'footer.php';
+ include '../footer.php';
 ?>
