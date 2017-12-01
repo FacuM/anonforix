@@ -16,6 +16,6 @@
 	}
    </style>
   <head>
-  <body bgcolor=black text=white ><font face='Ubuntu' >";
+  <body bgcolor=" . $theme["background"] . " text=" . $theme["accent"] . " ><font face='Ubuntu' >";
   include 'menu.php';
 ?>

@@ -2,8 +2,8 @@
  // Installation script for Anonforix
  $pageinfo = array ('Anonforix', 'Installation');
  $debugging = true;
- include 'top.php';
  include 'config.php';
+ include 'top.php';
  echo "
  <center>
   <h3>Welcome to the <b>Anonforix</b> installation wizard!</h3>
@@ -32,9 +32,6 @@
    </tr>
    <tr>
     <td>Users table: </td> <td>" . $credentials["utable"] . "</td>
-   </tr>
-   <tr>
-    <td>Administrators table: </td> <td>" . $credentials["atable"] . "</td>
    </tr>
   </table>
  </center>

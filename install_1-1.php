@@ -1,22 +1,27 @@
 <?php
  // Installation script for Anonforix
  $pageinfo = array ('Anonforix', 'Installation');
- $debugging = true;
- include 'top.php';
  include 'config.php';
+ include 'top.php';
  include 'connect.php';
- echo "<center>
+ if ( ($_POST['username'] == NULL || $_POST['username'] == '') ) {
+	 echo "<center>Failure.</center>";
+ } else {
+  echo "<center>
  <form method='post' action='install_2.php' >
  <p>Okay... this is what we've got: </p>
  <table>
   <tr>
-   <td>Username: </td><td>" . $_GET['username'] . "</td>
+   <td>Username: </td><td><input type='hidden' name='username' value='" . $_POST['username'] . "' >" . $_POST['username'] . "</td>
   </tr>
   <tr>
-   <td>Password: </td><td>" . $_GET['password'] . "</td>
+   <td>Password: </td><td><input type='hidden' name='password' value='" . $_POST['password'] . "' >" . $_POST['password'] . "</td>
   </tr>
   <tr>
-   <td>Email address: </td><td>" . $_GET['mail'] . "</td>
+   <td>Email address: </td><td><input type='hidden' name='mail' value='" . $_POST['mail'] . "' >" . $_POST['mail'] . "</td>
+  </tr>
+  <tr>
+   <td>PIN: </td><td><input type='hidden' name='pin' value='" . $_POST['pin'] . "' >" . $_POST['pin'] . "</td>
   </tr>
  </table>
  <p>Is it right?</p>
@@ -33,5 +38,6 @@
   </tr>
  </table>
  </form>
- "
+ ";
+ }
 ?>
