@@ -1,11 +1,10 @@
 <?php
  // Installation script for Anonforix
  $pageinfo = array ('Anonforix', 'Installation');
- include '../config.php';
- include '../top.php';
- include '../connect.php';
+ include("../config.php");
+ include("../top.php");
+ include("../connect.php");
  echo "
- <center>
  <h4>Step 1 - Registering the first administrator</h4>
   <form method='post' action='install_1-1.php' >
    <table>
@@ -19,7 +18,7 @@
 	 <td>Email address: </td><td><input type='text' name='mail' maxlength=100 ></td>
 	</tr>
     <tr>
-	 <td>PIN: </td><td><input type='text' name='pin' maxlength=100 ></td>
+	 <td>PIN: </td><td><input type='numeric' name='pin' maxlength=6 ></td>
 	</tr>
    </table>
    <br>
@@ -27,5 +26,5 @@
   </form>
  </center>
  ";
- include '../footer.php';
+ include("../footer.php");
 ?>
