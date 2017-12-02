@@ -1,10 +1,11 @@
 <?php
- include("../connect.php");
- include("../top.php");
+ include("../config.php");
+ include($path . "/connect.php");
+ if (!$frominstall) { include($path . "/top.php"); }
  if ( isset($_POST['userlevel']) ) { $userlevel = $_POST['userlevel']; } else { $userlevel = 1; }
  if ( isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail']) && isset($_POST['pin']) ) {
 
-  include("../connect.php");
+  include($path . "/connect.php");
  
   $userdata = array (
    'uusername'	=> mysqli_real_escape_string($server, $_POST['username']),
@@ -22,15 +23,15 @@
 	}
   else
 	{
-      $query = "SELECT * FROM " . $credentials["utable"] . "WHERE mail='" . $userdata["umail"] . "' ";
+      $query = "SELECT * FROM " . $credentials["utable"] . " WHERE mail='" . $userdata["umail"] . "' ";
 	  $result = mysqli_query($server,$query);
-      $row = mysqli_fetch_assoc($query);
+      $row = mysqli_fetch_assoc($result);
 	  if (count($row) > 1 ) {
         die("The mail address you're trying to register is already existing. Please go back and try again.");
 	  } else {
        $query = "INSERT INTO `" . $credentials["db"] . "`.`" . $credentials["utable"] . "` (`username`, `password`, `mail`, `pin`, `utype`) VALUES ('" . $userdata["uusername"] . "', '" . $userdata["upassword"] . "', '" . $userdata["umail"] . "', '" . $userdata["upin"] . "', " . $userlevel . ")";
 	   $loadquery = mysqli_query($server, $query);
- 	   header("location: login.php");
+	   echo "<p>We're all set, you can now <a href='" . $fullpath . "/session/login.php' >login.</a><br><br>Please don't forget to remove the <b>install</b> directory from your server.";
 	  }
  	}
  } elseif ( isset($_POST['username']) || isset($_POST['password']) || isset($_POST['mail']) || isset($_POST['pin']) ) {
