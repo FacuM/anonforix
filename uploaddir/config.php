@@ -2,11 +2,11 @@
  // Edit these values with your MySQL server's credentials
 
  // Wheter to show errors or not
- error_reporting(E_ERROR | E_PARSE);
+ //error_reporting(E_ERROR | E_PARSE);
  
  // Page info
  
- $pageinfo = array ('Anonforix', '');
+ $pageinfo = array ('Anonforix', 'The non-JS forum!');
  
  $credentials = array (
   'hostname' => '127.0.0.1',
@@ -14,7 +14,8 @@
   'username' => 'root',
   'password' => '',
   'db' => 'anonforix_users',
-  'utable' => 'anonforix_users'
+  'utable' => 'anonforix_users',
+  'ttable' => 'anonforix_threads'
  );
  
  /* Oh, please don't forget to define the root of your installation.
