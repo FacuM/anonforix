@@ -1,8 +1,9 @@
 <?php
  include("../config.php");
  include($path . "/connect.php");
+ if (!isset($frominstall)) { $frominstall = false; }
  if (!$frominstall) { include($path . "/top.php"); }
- if ( isset($_POST['userlevel']) ) { $userlevel = $_POST['userlevel']; } else { $userlevel = 1; }
+ if ( isset($userlevel) ) { $userlevel = $userlevel; } else { $userlevel = 1; }
  if ( isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail']) && isset($_POST['pin']) ) {
 
   include($path . "/connect.php");
@@ -57,6 +58,8 @@
    </table>
    <input type='submit' value='Register' >
    </form>
+  </center>
   ";
  }
+ include ($path . "/footer.php");
 ?>
