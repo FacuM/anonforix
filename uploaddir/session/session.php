@@ -1,5 +1,5 @@
 <?php
-   include($rootdir . '/connect.php');
+   include($path . '/connect.php');
    session_start();
    
    $user_check = $_SESSION['login_user'];
