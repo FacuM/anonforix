@@ -1,5 +1,12 @@
 <?php
  // Edit these values with your MySQL server's credentials
+
+ // Wheter to show errors or not
+ error_reporting(E_ERROR | E_PARSE);
+ 
+ // Page info
+ 
+ $pageinfo = array ('Anonforix', '');
  
  $credentials = array (
   'hostname' => '127.0.0.1',
