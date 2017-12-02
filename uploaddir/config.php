@@ -21,7 +21,8 @@
  
  Let suppose that you've installed Anonforix in '/var/www/anonforix', then, you should fill in here with '/anonforix'.*/
 
- $rootdir = '/anonforix/uploaddir';
+ $rootdir = 'anonforix/uploaddir';
+ $path = $_SERVER['DOCUMENT_ROOT'] . $rootdir;
  
  // Here, you can customize the website's accent and background colours, so the next time anyone visits it, it'll be dinamically updated
 
@@ -32,5 +33,5 @@
  );
  // From here, don't touch anything, we'll try to get everything up
  $serveraddress = $credentials["hostname"] . ":" . $credentials["port"];
- $fullpath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . "://" . $_SERVER['HTTP_HOST'] . $rootdir;
+ $fullpath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . "://" . $_SERVER['HTTP_HOST'] . "/" . $rootdir;
 ?>
