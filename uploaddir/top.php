@@ -2,8 +2,8 @@
  echo "
  <html>
   <head>
-   <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' >
-   <link rel='icon' href='/favicon.ico' type='image/x-icon' >
+   <link rel='shortcut icon' href='" . $fullpath . "/favicon.ico' type='image/x-icon' >
+   <link rel='icon' href='" . $fullpath . "/favicon.ico' type='image/x-icon' >
    <title>$pageinfo[0] - $pageinfo[1]</title>
    <style>
     @font-face {
@@ -14,8 +14,8 @@
 	a, a:link, a:visited, a:hover, a:active {
 	 color: white;
 	}
-   </style>
-  <head>
+   </style>"; if (isset($custh)) { echo $custh; }
+  echo "</head>
   <body bgcolor=" . $theme["background"] . " text=" . $theme["accent"] . " ><font face='Ubuntu' >";
-  include 'menu.php';
+  include("menu.php");
 ?>
