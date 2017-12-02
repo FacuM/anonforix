@@ -3,6 +3,7 @@
  $pageinfo = array ('Anonforix', 'Installation');
  include("../top.php");
  include("../connect.php");
+ $userlevel = 5;
  include("../processreg.php");
  if ( mysqli_error($server) == NULL || mysqli_error($server) == '' ) {
 	 echo "
