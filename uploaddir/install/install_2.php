@@ -1,10 +1,11 @@
 <?php
  // Installation script for Anonforix
  $pageinfo = array ('Anonforix', 'Installation');
- include("../top.php");
- include("../connect.php");
- $userlevel = 5;
- include("../processreg.php");
+ include("../config.php");
+ include($path . "/top.php");
+ include($path . "/connect.php");
+ $userlevel = 5; $frominstall = true;
+ include($path . "/session/register.php");
  if ( mysqli_error($server) == NULL || mysqli_error($server) == '' ) {
 	 echo "
 	  <p>Amazing! Looks like everything went as expected. What would you like to do now?</p>

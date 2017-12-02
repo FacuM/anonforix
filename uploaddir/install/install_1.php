@@ -2,8 +2,8 @@
  // Installation script for Anonforix
  $pageinfo = array ('Anonforix', 'Installation');
  include("../config.php");
- include("../top.php");
- include("../connect.php");
+ include($path . "/top.php");
+ include($path . "/connect.php");
  echo "
  <h4>Step 1 - Registering the first administrator</h4>
   <form method='post' action='install_1-1.php' >
@@ -26,5 +26,5 @@
   </form>
  </center>
  ";
- include("../footer.php");
+ include($path . "/footer.php");
 ?>

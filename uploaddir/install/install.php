@@ -1,9 +1,8 @@
 <?php
  // Installation script for Anonforix
- $pageinfo = array ('Anonforix', 'Installation');
- $debugging = true;
  include("../config.php");
- include("../top.php");
+ $pageinfo = array ('Anonforix', 'Installation');
+ include($path . "../top.php");
  echo "
   <h3>Welcome to the <b>Anonforix</b> installation wizard!</h3>
   <h4>Step 0 - Introduction and configuration diagnostics</h4>
@@ -36,7 +35,7 @@
  </center>
  <hr>
  <center>";
- include("../connectdbg.php");
+ include($path . "/connectdbg.php");
  echo "</center>";
  if ($err != 0) {
 	 echo "<p><b>Status: <span style='color: red' >Not passed!</span></b> Please correct the errors shown above and try again.</p>"; 
@@ -52,5 +51,5 @@
 	  <input type='submit' value='Continue' >
 	 </form>";
  }
- include("../footer.php");
+ include($path . "/footer.php");
 ?>

@@ -1,8 +1,9 @@
 <?php
  // Installation script for Anonforix
  $pageinfo = array ('Anonforix', 'Installation');
- include("../top.php");
- include("../connect.php");
+ include("../config.php");
+ include($path . "/top.php");
+ include($path . "/connect.php");
  if ( ( $_POST['username'] == NULL || $_POST['username'] == '' ) || ( $_POST['password'] == NULL || $_POST['password'] == '' ) || ( $_POST['mail'] == NULL || $_POST['mail'] == '' ) || ( $_POST['pin'] == NULL || $_POST['pin'] == '' ) ) {
 	 echo "
 	  <p>You must fill all the fields before you continue.</p>
