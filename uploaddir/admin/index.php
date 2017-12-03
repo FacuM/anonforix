@@ -3,7 +3,7 @@
  include($path . "/connect.php");
  include($path . "/session/session.php");
  include($path . "/top.php");
- $query = "SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = '" . $_SESSION['login_user'] . "'";
+ $query = "SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = '" . $_SESSION['logged'] . "'";
  $result = mysqli_query($server,$query);
  while ($row = mysqli_fetch_array($result)) {
 	 $level = $row['utype'];
