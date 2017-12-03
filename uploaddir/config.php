@@ -10,14 +10,14 @@
  
  $credentials = array (
   'hostname' => '127.0.0.1',
-  'port' => '3306',
+  'port' 	 => '3306',
   'username' => 'root',
   'password' => '',
-  'db' => 'anonforix_users',
-  'utable' => 'anonforix_users',
-  'ttable' => 'anonforix_threads'
-  'ptable' => 'anonforix_posts'
-  'ftable' => 'anonforix_forums'
+  'db' 		 => 'anonforix_users',
+  'utable' 	 => 'anonforix_users',
+  'ttable' 	 => 'anonforix_threads',
+  'ptable' 	 => 'anonforix_posts',
+  'ftable' 	 => 'anonforix_forums'
  );
  
  /* Oh, please don't forget to define the root of your installation.
