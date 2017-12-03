@@ -2,15 +2,15 @@
    include($path . '/connect.php');
    session_start();
    
-   $user_check = $_SESSION['login_user'];
+   $user = $_SESSION['logged'];
    
-   $ses_sql = mysqli_query($server,"select username from " . $credentials["utable"]. " where username = '$user_check' ");
+   $sqlsession = mysqli_query($server,"select username from " . $credentials["utable"]. " where username = '$user' ");
    
-   $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+   $row = mysqli_fetch_array($sqlsession,MYSQLI_ASSOC);
    
-   $login_session = $row['username'];
+   $logged = $row['username'];
    
-   if(!isset($_SESSION['login_user'])){
+   if(!isset($_SESSION['logged'])){
       header("location: login.php");
    }
 ?>

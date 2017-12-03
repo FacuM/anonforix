@@ -18,13 +18,13 @@
      $count = mysqli_num_rows($result);
 		
      if($count > 0) {
-        $_SESSION['login_user'] = $userdata["uusername"];
+        $_SESSION['logged'] = $userdata["uusername"];
         header("location: welcome.php");
 	 } else {
 		header("location: error.php");
 	 } 
  } else {
-	 if (!isset($_SESSION['login_user'])) {
+	 if (!isset($_SESSION['logged'])) {
       echo "
   <form action='' method='post' >
    <table>
