@@ -11,6 +11,6 @@
    $logged = $row['username'];
    
    if(!isset($_SESSION['logged'])){
-      header("location: login.php");
+      header("location: " . $fullpath . "/session/login.php");
    }
 ?>
