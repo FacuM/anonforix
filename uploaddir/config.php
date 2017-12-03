@@ -20,6 +20,10 @@
   'ftable' 	 => 'anonforix_forums'
  );
  
+ // Delay for redirects (default 5 seconds)
+ 
+ $redirt = 2;
+ 
  /* Oh, please don't forget to define the root of your installation.
  
  Let suppose that you've installed Anonforix in '/var/www/anonforix', then, you should fill in here with '/anonforix'.*/
