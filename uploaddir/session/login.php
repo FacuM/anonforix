@@ -4,29 +4,22 @@
  include($path . "/top.php");
  include($path . "/connect.php");
  if ( isset($_POST['username']) && isset($_POST['password']) ) {
-	 $userdata = array (
-	  'uusername' => mysqli_real_escape_string($server, $_POST['username']),
-	  'upassword' => mysqli_real_escape_string($server, $_POST['password']),
-	  'upin'	  => mysqli_real_escape_string($server, $_POST['pin'])
-	 );
 	 session_start();
-	 $sql = "SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = '" . $userdata["uusername"] . "' and `password` = '" . $userdata["upassword"] . "' and `pin` = '" . $userdata["upin"] . "'";
-     $result = mysqli_query($server,$sql);
-     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-     $active = $row['active'];
-     
-     $count = mysqli_num_rows($result);
-		
+	 $sql = "SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = " . $server->quote($_POST['username']) . " and `password` = " . $server->quote($_POST['password']) . " and `pin` = " . $server->quote($_POST['pin']);
+     $result = $server->query($sql);
+
+     $count = $result->rowCount();
+
      if($count > 0) {
-        $_SESSION['logged'] = $userdata["uusername"];
+        $_SESSION['logged'] = $server->quote($_POST['username']);
         header("location: welcome.php");
 	 } else {
 		header("location: error.php");
-	 } 
+	 }
  } else {
 	 if (!isset($_SESSION['logged'])) {
       echo "
-  <form action='' method='post' >
+  <form action='" . $fullpath . "/session/login.php' method='post' >
    <table>
     <tr>
      <td><b>&#9656; Username: </b>&nbsp;</td> <td><input type=text name='username' placeholder='Username' maxlength='25' ></td>
@@ -38,7 +31,7 @@
      <td><b>&#9656; PIN: </b>&nbsp;</td> <td><input type=password name='pin' placeholder='PIN' maxlength='6' ></td>
     </tr>
    </table>
-   <input type='submit' value='Login' >
+   <input type='submit' name='submit' value='Login' >
   </form>
   </center>
   ";

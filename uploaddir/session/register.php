@@ -5,33 +5,29 @@
  if (!$frominstall) { include($path . "/top.php"); }
  if ( isset($userlevel) ) { $userlevel = $userlevel; } else { $userlevel = 1; }
  if ( isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail']) && isset($_POST['pin']) ) {
+  if (!$frominstall && !strpos($_POST['mail'], '@')) { 
+   echo("<p>Please type a valid mail address and try again.</p>
+   </center>");
+   include ($path . "/footer.php");
+   die("");
+  }
 
   include($path . "/connect.php");
- 
-  $userdata = array (
-   'uusername'	=> mysqli_real_escape_string($server, $_POST['username']),
-   'upassword'	=> mysqli_real_escape_string($server, $_POST['password']),
-   'umail'		=> mysqli_real_escape_string($server, $_POST['mail']),
-   'upin'		=> mysqli_real_escape_string($server, $_POST['pin'])
-  );
   
-  $query = "SELECT * FROM " . $credentials["utable"] . " WHERE username='" . $userdata["uusername"] . "' ";
-  $result = mysqli_query($server,$query);
-  $row = mysqli_fetch_assoc($result);
-  if (count($row) > 1) 
+  $result = $server->query("SELECT * FROM " . $credentials["utable"] . " WHERE username=" . $server->quote($_POST['username']) . " ");
+  $count = $result->rowCount();
+  if ($count > 0) 
     { 
 	  die("The user you're trying to register is already existing. Please go back and try again.");
 	}
   else
 	{
-      $query = "SELECT * FROM " . $credentials["utable"] . " WHERE mail='" . $userdata["umail"] . "' ";
-	  $result = mysqli_query($server,$query);
-      $row = mysqli_fetch_assoc($result);
-	  if (count($row) > 1 ) {
+      $result = $server->query("SELECT * FROM " . $credentials["utable"] . " WHERE mail=" . $server->quote($_POST['mail']) . " ");
+      $count = $result->rowCount();
+	  if ($count > 0) {
         die("The mail address you're trying to register is already existing. Please go back and try again.");
 	  } else {
-       $query = "INSERT INTO `" . $credentials["db"] . "`.`" . $credentials["utable"] . "` (`username`, `password`, `mail`, `pin`, `utype`) VALUES ('" . $userdata["uusername"] . "', '" . $userdata["upassword"] . "', '" . $userdata["umail"] . "', '" . $userdata["upin"] . "', " . $userlevel . ")";
-	   $loadquery = mysqli_query($server, $query);
+       $server->query("INSERT INTO `" . $credentials["db"] . "`.`" . $credentials["utable"] . "` (`username`, `password`, `mail`, `pin`, `utype`) VALUES (" . $server->quote($_POST['username']) . ", " . $server->quote($_POST['password']) . ", " . $server->quote($_POST['mail']) . ", " . $server->quote($_POST['pin']) . ", " . $userlevel . ")");
 	   echo "<p>We're all set, you can now <a href='" . $fullpath . "/session/login.php' >login.</a><br><br>Please don't forget to remove the <b>install</b> directory from your server.";
 	  }
  	}
@@ -41,7 +37,7 @@
 	 ;
  } else {
   echo "
-  <form action='' method='post' >
+  <form action='" . $fullpath . "/session/register.php' method='post' >
    <table>
     <tr>
      <td><b>&#9656; Username: </b></td><td><input type=text name='username' placeholder='Username' maxlength=25 ></td>
