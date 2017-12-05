@@ -7,7 +7,7 @@
  <table width=100% border=1px style='border-color: white;' >";
  // Display threads
  if (isset($_GET['viewforum']) && !isset($_GET['viewthread'])) {
-  $result = ($server->query("SELECT * FROM `" . $credentials["ftable"] . "` WHERE `fid` = '" . $server->quote($_GET['viewforum']) . "'"));
+  $result = ($server->query("SELECT * FROM `" . $credentials["ftable"] . "` WHERE `fid` = " . $server->quote($_GET['viewforum'])));
   $count = $result->rowCount();
   $allowance = 0;
   if ($count > 0)
@@ -17,7 +17,7 @@
  	 $allowed = explode(",",$rows['allowed']);
 	 $threads = explode(",",$rows['threads']);
 	 foreach ($allowed as $data) {
-    if ($_SESSION['logged'] == $data) {
+    if ($_SESSION['logged'] == "'$data'") {
       $allowance = $allowance + 1;
       $forumexists = true;
 	  }
@@ -33,7 +33,7 @@
 	  {
 	   echo "
 	   <tr>
-	    <td><center><a href='?viewforum=$fid&viewthread=$data&ttitle=" . $trows['title'] . "' >" . $trows['title'] . "</a></center></td> <td><center>". $trows['op'] . "</center>
+	    <td><center><a href='?viewforum=" . $rows['fid'] . "&viewthread=$data&ttitle=" . $trows['title'] . "' >" . $trows['title'] . "</a></center></td> <td><center>". $trows['op'] . "</center>
 	   </tr>
 	   ";
 	  }
@@ -51,8 +51,8 @@
  } else {
   // Display posts
   if (isset($_GET['viewforum']) && isset($_GET['viewthread'])) {
-   $fid = mysqli_real_escape_string($server,$_GET['viewforum']);
-   $pid = mysqli_real_escape_string($server,$_GET['viewthread']);
+   $fid = $server->quote($_GET['viewforum']);
+   $pid = $server->quote($_GET['viewthread']);
    echo "
    <tr>
     <th width=25% >Thread title</th> <td>"; if (!isset($_GET['ttitle'])) { echo "Untitled thread</td>"; } else { echo $_GET['ttitle'] . "</td>"; }
