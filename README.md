@@ -5,6 +5,13 @@ Anonforix has been born with the simple objective of providing the web a spying-
 
 It's in a really early development stage, currently working features are presented below:
 
+### Requirements
+
+ - PHP5+
+ - MySQL Server
+ - Apache server
+
+### Features
 
  - Official favicon.
  - Forums support (WIP for backend and creation).
