@@ -39,6 +39,13 @@
   'menubg'		=> 'black'
  );
  // From here, don't touch anything, we'll try to get everything up
+
+ // Set the full address for MySQL connection
  $serveraddress = $credentials["hostname"] . ":" . $credentials["port"];
+ // Set the full path in URL format
  $fullpath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . "://" . $_SERVER['HTTP_HOST'] . "/" . $rootdir;
+ // Check wether we'll be able to create and destroy sessions, if not, stop the website from working
+ if (!file_exists($path . "/session/session.php")) {
+  die ("Can't find 'session.php', please check your installation.");
+ }
 ?>
