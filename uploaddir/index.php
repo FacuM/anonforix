@@ -5,22 +5,22 @@
  include($path . "/top.php");
  echo "
  <table width=100% border=1px style='border-color: white;' >";
- if (isset($_GET['viewforum'])) {
-  $fid = mysqli_real_escape_string($server,$_GET['viewforum']);
-  $query = "SELECT * FROM `" . $credentials["ftable"] . "` WHERE `fid` = '$fid'";
-  $result = mysqli_query($server,$query);
-  $count = mysqli_num_rows($result);
+ // Display threads
+ if (isset($_GET['viewforum']) && !isset($_GET['viewthread'])) {
+  $result = ($server->query("SELECT * FROM `" . $credentials["ftable"] . "` WHERE `fid` = '" . $server->quote($_GET['viewforum']) . "'"));
+  $count = $result->rowCount();
   $allowance = 0;
   if ($count > 0)
   {
-   while ($rows = mysqli_fetch_assoc($result))
+   foreach ($result as $rows)
    {
-	$allowed = explode(",",$rows['allowed']);
-	$threads = explode(",",$rows['threads']);
-	foreach ($allowed as $data) {
+ 	 $allowed = explode(",",$rows['allowed']);
+	 $threads = explode(",",$rows['threads']);
+	 foreach ($allowed as $data) {
     if ($_SESSION['logged'] == $data) {
       $allowance = $allowance + 1;
-	 }
+      $forumexists = true;
+	  }
 	}
 	if ($allowance > 0) {
 	 echo "
@@ -29,13 +29,11 @@
      </tr>
 	 ";
 	 foreach ($threads as $data) {
-      $tquery = "SELECT * FROM `" . $credentials["ttable"] . "` WHERE `thread` = '$data'";
-      $tresult = mysqli_query($server,$tquery);
-      while ($trows = mysqli_fetch_assoc($tresult))
+      foreach ($server->query("SELECT * FROM `" . $credentials["ttable"] . "` WHERE `thread` = '$data'") as $trows)
 	  {
 	   echo "
 	   <tr>
-	    <td><center><a href='?viewforum=$fid&viewthread=$data' >" . $trows['title'] . "</a></center></td> <td><center>". $trows['op'] . "</center>
+	    <td><center><a href='?viewforum=$fid&viewthread=$data&ttitle=" . $trows['title'] . "' >" . $trows['title'] . "</a></center></td> <td><center>". $trows['op'] . "</center>
 	   </tr>
 	   ";
 	  }
@@ -51,13 +49,21 @@
    echo "The specified forum does not exist.";
   }
  } else {
+  // Display posts
+  if (isset($_GET['viewforum']) && isset($_GET['viewthread'])) {
+   $fid = mysqli_real_escape_string($server,$_GET['viewforum']);
+   $pid = mysqli_real_escape_string($server,$_GET['viewthread']);
+   echo "
+   <tr>
+    <th width=25% >Thread title</th> <td>"; if (!isset($_GET['ttitle'])) { echo "Untitled thread</td>"; } else { echo $_GET['ttitle'] . "</td>"; }
+   echo "</tr>";
+  } else {
+  // Display forums
   echo "
   <tr>
    <th width=25% >Forum</th> <th>Last post</th>
   </tr>";
-  $query = "SELECT * FROM " . $credentials["ftable"];
-  $data = mysqli_query($server,$query);
-  while ($rows = mysqli_fetch_assoc($data))
+  foreach ($server->query("SELECT * FROM " . $credentials["ftable"]) as $rows)
   {
    echo "
    <tr>
@@ -71,14 +77,13 @@
 	if ($rows['lastpid'] == 0) {
 	  echo "No posts found.";
 	} else {
-	 $pquery = "SELECT * FROM `" . $credentials["ptable"] . "` WHERE `pid` = '" . $rows['lastpid'] . "'";
-	 $pdata = mysqli_query($server,$pquery);
-	  while ($prows = mysqli_fetch_assoc($pdata))
+	 foreach ($server->query("SELECT * FROM `" . $credentials["ptable"] . "` WHERE `pid` = '" . $rows['lastpid'] . "'") as $prows)
 	  { echo $prows['data']; }
 	}
 	echo "
 	</td>
    </tr>";
+   }
   }
  }
  echo "
