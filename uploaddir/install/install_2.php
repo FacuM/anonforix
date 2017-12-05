@@ -6,7 +6,7 @@
  include($path . "/connect.php");
  $userlevel = 5; $frominstall = true;
  include($path . "/session/register.php");
- if ( mysqli_error($server) == NULL || mysqli_error($server) == '' ) {
+ if ( PDOException == NULL || PDOException == '' ) {
 	 echo "
 	  <p>Amazing! Looks like everything went as expected. What would you like to do now?</p>
 	  <table>
