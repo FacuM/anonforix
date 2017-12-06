@@ -15,7 +15,7 @@
   if ($level > 1) {
    echo"
    <h2>Level 2 - Moderator</h2>
-   <p>Nothnig for now.</p>
+   <p>Nothing for now.</p>
    ";
    if ($level > 2) {
     echo "
