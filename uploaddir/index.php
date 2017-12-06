@@ -52,12 +52,37 @@
   // Display posts
   if (isset($_GET['viewforum']) && isset($_GET['viewthread'])) {
    $fid = $server->quote($_GET['viewforum']);
-   $pid = $server->quote($_GET['viewthread']);
+   $tid = $server->quote($_GET['viewthread']);
    echo "
    <tr>
-    <th width=25% >Thread title</th> <td>"; if (!isset($_GET['ttitle'])) { echo "Untitled thread</td>"; } else { echo $_GET['ttitle'] . "</td>"; }
-   echo "</tr>";
+    <th width=25% >Thread title</th> <td>"; if (!isset($_GET['ttitle'])) { echo "Untitled thread</td></tr></table>"; } else { echo $_GET['ttitle'] . "</td></tr></table>"; }
+   $pdata = $server->query("SELECT * FROM `anonforix_threads` WHERE thread = " . $tid);
+   foreach ($pdata as $rows) { $posts = $rows['posts']; }
+   $posts = explode(",",$posts);
+   echo "<table width=100% border=1px style='border-color: white;' >";
+   foreach ($posts as $pid) {
+     echo "
+     <tr>
+      <th width=25% >Post id: </th> <td width=75% >#$pid</td>
+     </tr>";
+     foreach ($server->query("SELECT * FROM `anonforix_posts` WHERE `pid` = '" . $pid . "'") as $prows) {
+      echo "
+      <tr height=200px >
+       <th style='vertical-align: top' >Content: </th> <td style='vertical-align: top; text-align: left' >" . $prows['data'] . "</td>
+      </tr>
+      ";
+     }
+   }
+   echo "</table>";
   } else {
+    if (!isset($_GET['viewforum']) && isset($_GET['viewthread'])) {
+      echo "
+        <p>Invalid request, please double-check your URL!</p>
+       </table>
+      </center>";
+      include ($path . "/footer.php");
+      die("");
+    } else {
   // Display forums
   echo "
   <tr>
@@ -85,6 +110,7 @@
    </tr>";
    }
   }
+ }
  }
  echo "
   </table>
