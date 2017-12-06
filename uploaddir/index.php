@@ -54,15 +54,18 @@
    $fid = $server->quote($_GET['viewforum']);
    $tid = $server->quote($_GET['viewthread']);
    echo "
-   <tr>
-    <th width=25% >Thread title</th> <td>"; if (!isset($_GET['ttitle'])) { echo "Untitled thread</td></tr></table>"; } else { echo $_GET['ttitle'] . "</td></tr></table>"; }
+    <tr>
+     <th width=25% >Thread title</th> <td>"; if (!isset($_GET['ttitle'])) { echo "Untitled thread</td>"; } else { echo $_GET['ttitle'] . "</td>"; }
+     echo "<td width=5% height=5% ><a href='" . $fullpath . "/create.php?tid=" . str_replace("'", "", $tid) . "' ><img width=30em height=30em src='" . $fullpath . "/assets/addpost.png' /></a></td>
+    </tr>
+   </table>";
    $pdata = $server->query("SELECT * FROM `anonforix_threads` WHERE thread = " . $tid);
    foreach ($pdata as $rows) { $posts = $rows['posts']; }
    $posts = explode(",",$posts);
    echo "<table width=100% border=1px style='border-color: white;' >";
    foreach ($posts as $pid) {
      echo "
-     <tr>
+     <tr >
       <th width=25% >Post id: </th> <td width=75% >#$pid</td>
      </tr>";
      foreach ($server->query("SELECT * FROM `anonforix_posts` WHERE `pid` = '" . $pid . "'") as $prows) {
