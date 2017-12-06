@@ -22,11 +22,15 @@ It's in a really early development stage, currently working features are present
  - Session and user registration control.
  - Basic theming support.
 
+### See it in action!
+
+[Anonforix on Infinity Host](http://anonforix.infinityfreeapp.com)
+
 ### Installation
 
  - Clone the repo:
 
-	`git clone https://github.com/FacuM/anonforix.git`
+  `git clone https://github.com/FacuM/anonforix.git`
 
  - Now connect to your server and create the 'anonforix_users' database.
 
@@ -36,9 +40,9 @@ It's in a really early development stage, currently working features are present
 
  - Test with these credentials:
 
-	`Username: admin`
-	`Password: admin`
-	`Pin: 123456`
+  `Username: admin`
+  `Password: admin`
+  `Pin: 123456`
 
  - Good luck and enjoy this early alpha!
 
