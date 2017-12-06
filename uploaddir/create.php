@@ -22,6 +22,7 @@
    echo "<input type='hidden' name='tidsec' value='" . $_GET['tid'] . "' >
    </tr>
   </table>
+  <input type='hidden' name='fid' value='" . $_GET['fid'] . "' >
   <input type='submit' name='submit' value='Done' >
   </form>
  </center>";
@@ -45,10 +46,13 @@
    foreach ($server->query("SELECT * FROM `" . $credentials["ttable"] . "` WHERE `thread` = '" . $tid . "'") as $rows) {
      $server->query("UPDATE `" . $credentials["ttable"] . "` SET `posts`= '" . $rows["posts"] . "," . $rndn . "' WHERE thread = " . $tid);
      $pquery = "INSERT INTO `" . $credentials["ptable"] . "` (`pid`, `data`) VALUES ('" . $rndn . "', " . $server->quote($_POST['data']) . ")";
-     echo $pquery;
      $server->query($pquery);
     }
-   //header("location: " . $fullpath . "/index.php");
+   if (isset($_POST['fid'])) {
+    header("location: " . $fullpath . "/index.php?viewforum=$fid&viewthread=$tid");
+   } else {
+	header("location: " . $fullpath . "/index.php");
+   }
   }
  }
  include($path . "/footer.php");

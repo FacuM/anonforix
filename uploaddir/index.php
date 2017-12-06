@@ -56,7 +56,7 @@
    echo "
     <tr>
      <th width=25% >Thread title</th> <td>"; if (!isset($_GET['ttitle'])) { echo "Untitled thread</td>"; } else { echo $_GET['ttitle'] . "</td>"; }
-     echo "<td width=5% height=5% ><a href='" . $fullpath . "/create.php?tid=" . str_replace("'", "", $tid) . "' ><img width=30em height=30em src='" . $fullpath . "/assets/addpost.png' /></a></td>
+     echo "<td width=5% height=5% ><a href='" . $fullpath . "/create.php?tid=" . str_replace("'", "", $tid) . "&fid=" . str_replace("'", "", $fid) . "' ><img width=30em height=30em src='" . $fullpath . "/assets/addpost.png' /></a></td>
     </tr>
    </table>";
    $pdata = $server->query("SELECT * FROM `anonforix_threads` WHERE thread = " . $tid);
