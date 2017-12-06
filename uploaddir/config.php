@@ -1,4 +1,13 @@
 <?php
+ // Measure the time from taken to process the scripts, as shown in PHP.net.
+ function microtime_float()
+ {
+    list($usec, $sec) = explode(" ", microtime());
+    return ((float)$usec + (float)$sec);
+ }
+
+ $time_start = microtime_float();
+
  // Edit these values with your MySQL server's credentials
 
  // Wheter to show errors or not
@@ -9,10 +18,10 @@
  $pageinfo = array ('Anonforix', 'The non-JS forum!');
 
  $credentials = array (
-  'hostname' => '127.0.0.1',
+  'hostname' 	 => '127.0.0.1',
   'port' 	 => '3306',
-  'username' => 'root',
-  'password' => '',
+  'username' 	 => 'root',
+  'password' 	 => '',
   'db' 		 => 'anonforix_users',
   'utable' 	 => 'anonforix_users',
   'ttable' 	 => 'anonforix_threads',
@@ -26,7 +35,7 @@
 
  /* Oh, please don't forget to define the root of your installation.
 
- Let suppose that you've installed Anonforix in '/var/www/anonforix', then, you should fill in here with '/anonforix'.*/
+ Lets suppose that you've installed Anonforix in '/var/www/anonforix', then, you should fill in here with '/anonforix'.*/
 
  $rootdir = '/anonforix/uploaddir';
  $path = $_SERVER['DOCUMENT_ROOT'] . $rootdir;
@@ -35,7 +44,7 @@
 
  $theme = array (
   'accent'		=> 'white',
-  'background'	=> 'black',
+  'background'		=> 'black',
   'menubg'		=> 'black'
  );
  // From here, don't touch anything, we'll try to get everything up

@@ -1,5 +1,5 @@
 <?php
- include("config.php");
+ require_once("config.php");
  include($path . "/connect.php");
  include($path . "/session/session.php");
  include($path . "/top.php");
