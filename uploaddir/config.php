@@ -55,6 +55,6 @@
  $fullpath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . "://" . $_SERVER['HTTP_HOST'] . $rootdir;
  // Check wether we'll be able to create and destroy sessions, if not, stop the website from working
  if (!file_exists($path . "/session/session.php")) {
-  die ("Can't find 'session.php', please check your installation.");
+  die ("Can't find 'session.php', please check your installation.<br><br>Root dir path: " . $path);
  }
 ?>
