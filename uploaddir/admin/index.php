@@ -3,9 +3,8 @@
  include($path . "/connect.php");
  include($path . "/session/session.php");
  include($path . "/top.php");
- $query = "SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = '" . $_SESSION['logged'] . "'";
- $result = mysqli_query($server,$query);
- while ($row = mysqli_fetch_array($result)) {
+ $result = $server->query("SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = " . $_SESSION['logged']);
+ foreach ($result as $row) {
 	 $level = $row['utype'];
  }
  if ($level >= 1) {
