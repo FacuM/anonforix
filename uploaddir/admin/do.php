@@ -40,7 +40,7 @@
      } elseif ($_POST['operation'] == 'add') {
         $forums = $server->query("SELECT * FROM `" . $credentials["ftable"] . "` WHERE fid = " . $server->quote($_POST['fname']));
         $famount = $forums->rowCount();
-        if ($famount > 0) { 
+        if ($famount > 0) {
          echo "You can't add a forum twice!";
         } else {
          $faddq = "INSERT INTO `" . $credentials["ftable"] . "` (`fid`, `desc`, `threads`, `allowed`, `lastpid`) VALUES (" . $server->quote($_POST['fname']) . ",'No description given.','None'," . $_SESSION['logged'] . ",-1)";
@@ -53,5 +53,6 @@
     }
    }
  }
+ echo "</center>";
  include($path . "/footer.php");
 ?>
