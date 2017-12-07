@@ -30,12 +30,36 @@
      if ($level > 4) {
       echo "
       <h2>Level 5 - Super Administrator</h2>
-	  <p>Nothing for now.</p>
-     ";
+      <p>Forums management - Creation and deletion</p>
+       <table >
+        <tr>
+	<form action='" . $fullpath . "/admin/do.php' method='post' >
+         <td>
+	  <select name='fname' size=1 >
+      ";
+     foreach ($server->query("SELECT * FROM " . $credentials['ftable']) as $forums) {
+       echo "<option value='" . $forums['fid'] . "' >" . $forums['fid'] . "</option>";
      }
-	}
+     echo "
+          </select>
+	</td>
+	<td>
+	 <input type='submit' name='submit' value='Delete' >
+	 <input type='hidden' name='operation' value='del' >
+	</td>
+       </form>
+       </tr>
+       <tr>
+       <form action='" . $fullpath . "/admin/do.php' method='post' >
+        <td><input type='text' name='fname' placeholder='New forum name...' ></td>
+	<td><input type='submit' name='submit' value='Add' ><input type='hidden' name='operation' value='add' ></td>
+       </tr>
+      </table>
+     ";
+    }
    }
   }
+ }
  }
  echo "</center>";
  include($path . "/footer.php");
