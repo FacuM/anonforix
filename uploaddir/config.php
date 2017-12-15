@@ -53,6 +53,8 @@
  $serveraddress = $credentials["hostname"] . ":" . $credentials["port"];
  // Set the full path in URL format
  $fullpath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . "://" . $_SERVER['HTTP_HOST'] . $rootdir;
+ // Set the path to the modified source code (mandatory)
+ $sourcecode = "https://github.com/FacuM/anonforix";
  // Check wether we'll be able to create and destroy sessions, if not, stop the website from working
  if (!file_exists($path . "/session/session.php")) {
   die ("Can't find 'session.php', please check your installation.<br><br>Root dir path: " . $path);
