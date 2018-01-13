@@ -18,15 +18,15 @@
  $pageinfo = array ('Anonforix', 'The non-JS forum!');
 
  $credentials = array (
-  'hostname' 	 => '127.0.0.1',
-  'port' 	 => '3306',
-  'username' 	 => 'root',
-  'password' 	 => '',
-  'db' 		 => 'anonforix_users',
-  'utable' 	 => 'anonforix_users',
-  'ttable' 	 => 'anonforix_threads',
-  'ptable' 	 => 'anonforix_posts',
-  'ftable' 	 => 'anonforix_forums'
+  'hostname'  	  => '127.0.0.1',
+  'port' 	        => '3306',
+  'username' 	    => 'root',
+  'password' 	    => '',
+  'db' 		        => 'anonforix_users',
+  'utable' 	      => 'anonforix_users',
+  'ttable' 	      => 'anonforix_threads',
+  'ptable' 	      => 'anonforix_posts',
+  'ftable' 	      => 'anonforix_forums'
  );
 
  // Delay for redirects (default 5 seconds)
