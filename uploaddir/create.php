@@ -26,7 +26,7 @@
   <input type='submit' name='submit' value='Done' >
   </form>
  </center>";
- } else { 
+ } else {
   if (!isset($tid)) {
    if (isset($_POST['tidsec'])) {
     $tid = $_POST['tidsec'];
@@ -44,8 +44,7 @@
     }
    }
    foreach ($server->query("SELECT * FROM `" . $credentials["ttable"] . "` WHERE `thread` = '" . $tid . "'") as $rows) {
-     $server->query("UPDATE `" . $credentials["ttable"] . "` SET `posts`= '" . $rows["posts"] . "," . $rndn . "' WHERE thread = " . $tid);
-     $pquery = "INSERT INTO `" . $credentials["ptable"] . "` (`pid`, `data`) VALUES ('" . $rndn . "', " . $server->quote($_POST['data']) . ")";
+     $pquery = "INSERT INTO `" . $credentials["ptable"] . "` (`pid`, `data`, `tid`) VALUES ('" . $rndn . "', " . $server->quote($_POST['data']) . ", '$tid')";
      $server->query($pquery);
     }
    if (isset($_POST['fid'])) {
