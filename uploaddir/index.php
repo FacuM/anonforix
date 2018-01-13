@@ -1,8 +1,5 @@
 <?php
  require_once("config.php");
- include($path . "/connect.php");
- include($path . "/session/session.php");
- include($path . "/top.php");
  echo "
  <table width=100% border=1px style='border-color: white;' >";
  // Display threads

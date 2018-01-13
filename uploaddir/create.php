@@ -1,8 +1,5 @@
 <?php
  include("config.php");
- include($path . "/connect.php");
- include($path . "/session/session.php");
- include($path . "/top.php");
  if (!isset($_POST['data'])) {
   if (isset($_GET['tid'])) { $tid = $_GET['tid']; }
   echo "

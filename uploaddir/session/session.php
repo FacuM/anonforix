@@ -1,5 +1,6 @@
 <?php
-   require_once($path . "/config.php");
+   //require_once($path . "/config.php");
+   require_once("../config.php");
    session_start();
 
    if(!isset($_SESSION['logged'])){
