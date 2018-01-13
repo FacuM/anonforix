@@ -43,9 +43,9 @@
  // Here, you can customize the website's accent and background colours, so the next time anyone visits it, it'll be dinamically updated
 
  $theme = array (
-  'accent'		=> 'white',
+  'accent'		    => 'white',
   'background'		=> 'black',
-  'menubg'		=> 'black'
+  'menubg'	     	=> 'black'
  );
  // From here, don't touch anything, we'll try to get everything up
 
