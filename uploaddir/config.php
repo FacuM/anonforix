@@ -59,4 +59,7 @@
  if (!file_exists($path . "/session/session.php")) {
   die ("Can't find 'session.php', please check your installation.<br><br>Root dir path: " . $path);
  }
+ require_once($path . "/connect.php");
+ require_once($path . "/session/session.php");
+ require_once($path . "/top.php");
 ?>

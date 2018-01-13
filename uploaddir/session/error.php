@@ -1,11 +1,9 @@
 <?php
  // Login error script
- include("../config.php");
- include($path . "/top.php");
- include($path . "/connect.php");
+ require_once("../config.php");
  echo "
  <p>Unable to log in: no match for username/password combination.</p>
  </center>
  ";
- include($path . "/footer.php");
+ require_once($path . "/footer.php");
 ?>
