@@ -1,8 +1,6 @@
 <?php
  // Login script
- include("../config.php");
- include($path . "/top.php");
- include($path . "/connect.php");
+ require_once 'includes/head.php';
  if ( isset($_POST['username']) && isset($_POST['password']) ) {
 	 session_start();
 	 $sql = "SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = " . $server->quote($_POST['username']) . " and `password` = " . $server->quote($_POST['password']) . " and `pin` = " . $server->quote($_POST['pin']);
@@ -14,12 +12,15 @@
         $_SESSION['logged'] = $server->quote($_POST['username']);
         header("location: welcome.php");
 	 } else {
-		header("location: error.php");
+    echo "
+     <p>Unable to log in: no match for username/password combination.</p>
+    </center>
+    ";
 	 }
  } else {
 	 if (!isset($_SESSION['logged'])) {
       echo "
-  <form action='" . $fullpath . "/session/login.php' method='post' >
+  <form action='login.php' method='post' >
    <table>
     <tr>
      <td><b>&#9656; Username: </b>&nbsp;</td> <td><input type=text name='username' placeholder='Username' maxlength='25' ></td>
@@ -39,5 +40,5 @@
 		 echo "You can't login twice!";
 	 }
  }
- include($path . "/footer.php");
+ require_once 'includes/footer.php';
 ?>

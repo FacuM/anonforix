@@ -22,17 +22,6 @@
   'ftable'      => 'anonforix_forums'
  );
 
- // Delay for redirects (default 5 seconds)
-
- $redirt = 2;
-
- /* Oh, please don't forget to define the root of your installation.
-
- Lets suppose that you've installed Anonforix in '/var/www/anonforix', then, you should fill in here with '/anonforix'.*/
-
- $rootdir = '/anonforix/uploaddir';
- $path = $_SERVER['DOCUMENT_ROOT'] . $rootdir;
-
  // Here, you can customize the website's accent and background colours, so the next time anyone visits it, it'll be dinamically updated
 
  $theme = array (
@@ -47,12 +36,13 @@
 
  // Set the full address for MySQL connection
  $serveraddress = $credentials["hostname"] . ":" . $credentials["port"];
- // Set the full path in URL format
- $fullpath = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . "://" . $_SERVER['HTTP_HOST'] . $rootdir;
  // Set the path to the modified source code (mandatory)
  $sourcecode = "https://github.com/FacuM/anonforix";
  // Check wether we'll be able to create and destroy sessions, if not, stop the website from working
- if (!file_exists($path . "/session/session.php")) {
-  die ("Can't find 'session.php', please check your installation.<br><br>Root dir path: " . $path);
+ if (!file_exists('includes/session.php')) {
+  die ('Can\'t find \'session.php\', please check your installation.');
  }
+ // Open connection the DB
+ $server = new PDO('mysql:host=' . $serveraddress . ';dbname=' . $credentials["db"] . ';charset=utf8', $credentials["username"], $credentials["password"]);
+
 ?>

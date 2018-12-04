@@ -1,8 +1,6 @@
 <?php
- include("../config.php");
- include($path . "/connect.php");
- include($path . "/session/session.php");
- include($path . "/top.php");
+ $protected = true;
+ require_once 'includes/head.php';
  $result = $server->query("SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = " . $_SESSION['logged']);
  foreach ($result as $row) {
 	 $level = $row['utype'];
@@ -33,7 +31,7 @@
       <p>Forums management - Creation and deletion</p>
        <table >
         <tr>
-	<form action='" . $fullpath . "/admin/do.php' method='post' >
+	<form action='do.php' method='post' >
          <td>
 	  <select name='fname' size=1 >
       ";
@@ -50,7 +48,7 @@
        </form>
        </tr>
        <tr>
-       <form action='" . $fullpath . "/admin/do.php' method='post' >
+       <form action='do.php' method='post' >
         <td><input type='text' name='fname' placeholder='New forum name...' ></td>
 	<td><input type='submit' name='submit' value='Add' ><input type='hidden' name='operation' value='add' ></td>
        </tr>
@@ -62,5 +60,5 @@
  }
  }
  echo "</center>";
- include($path . "/footer.php");
+ require_once 'includes/footer.php';
 ?>

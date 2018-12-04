@@ -1,8 +1,6 @@
 <?php
- require_once("config.php");
- include($path . "/connect.php");
- include($path . "/session/session.php");
- include($path . "/top.php");
+ $protected = true;
+ require_once 'includes/head.php';
  echo "
  <table width=100% border=1px style='border-color: white;' >";
  // Display threads
@@ -56,7 +54,7 @@
    echo "
     <tr>
      <th width=25% >Thread title</th> <td>"; if (!isset($_GET['ttitle'])) { echo "Untitled thread</td>"; } else { echo $_GET['ttitle'] . "</td>"; }
-     echo "<td width=5% height=5% ><a href='" . $fullpath . "/create.php?tid=" . str_replace("'", "", $tid) . "&fid=" . str_replace("'", "", $fid) . "' ><img width=30em height=30em src='" . $fullpath . "/assets/addpost.png' /></a></td>
+     echo "<td width=5% height=5% ><a href='create.php?tid=" . str_replace("'", "", $tid) . "&fid=" . str_replace("'", "", $fid) . "' ><img width=30em height=30em src='assets/addpost.png' /></a></td>
     </tr>
    </table>";
    $pdata = $server->query("SELECT * FROM `anonforix_threads` WHERE thread = " . $tid);
@@ -83,7 +81,7 @@
         <p>Invalid request, please double-check your URL!</p>
        </table>
       </center>";
-      include ($path . "/footer.php");
+      require_once 'includes/footer.php';
       die("");
     } else {
   // Display forums
@@ -119,5 +117,5 @@
   </table>
  </center>
  ";
- include($path . "/footer.php");
+ require_once 'includes/footer.php';
 ?>

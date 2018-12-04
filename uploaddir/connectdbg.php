@@ -1,6 +1,6 @@
 <?php
  // From here, don't touch anything, we'll try to get everything up
- include($path . "../connect.php");
+ require_once 'config.php';
  $err = 2;
  echo "<p><b>Connecting with the MySQL server...</b></p>";
  $server = mysqli_connect($serveraddress, $credentials["username"], $credentials["password"]);
@@ -19,7 +19,5 @@
 	   echo "<p>Success handling the selection of the database.</p>";
 	  }
 	 }
-   }
   }
- }
 ?>

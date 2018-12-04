@@ -1,8 +1,6 @@
 <?php
- include("../config.php");
- include($path . "/connect.php");
- include($path . "/session/session.php");
- include($path . "/top.php");
+ $protected = true;
+ require_once 'includes/head.php';
  // Get the logged in user's level
  $query = "SELECT * FROM " . $credentials["utable"] . " WHERE username = " . $_SESSION['logged'];
  foreach ($server->query($query) as $users) {
@@ -54,5 +52,5 @@
    }
  }
  echo "</center>";
- include($path . "/footer.php");
+ require_once 'includes/footer.php';
 ?>

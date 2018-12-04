@@ -1,12 +1,9 @@
 <?php
- include("config.php");
- include($path . "/connect.php");
- include($path . "/session/session.php");
- include($path . "/top.php");
+ require_once 'includes/head.php';
  if (!isset($_POST['data'])) {
   if (isset($_GET['tid'])) { $tid = $_GET['tid']; }
   echo "
-  <form action='" . $fullpath . "/create.php' method=post >
+  <form action='' method=post >
   <table width=100% border=1px style='border-color: white' >
    <tr>
     <th>Post: </th>
@@ -48,11 +45,11 @@
      $server->query($pquery);
     }
    if (isset($_POST['fid'])) {
-    header("location: " . $fullpath . "/index.php?viewforum=$fid&viewthread=$tid");
+    header("location: index.php?viewforum=$fid&viewthread=$tid");
    } else {
-	header("location: " . $fullpath . "/index.php");
+	header("location: index.php");
    }
   }
  }
- include($path . "/footer.php");
+ require_once 'includes/footer.php';
 ?>

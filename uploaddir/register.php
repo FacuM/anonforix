@@ -1,23 +1,19 @@
 <?php
- include("../config.php");
- include($path . "/connect.php");
  if (!isset($frominstall)) { $frominstall = false; }
- if (!$frominstall) { include($path . "/top.php"); }
+ require_once 'includes/head.php';
  if ( isset($userlevel) ) { $userlevel = $userlevel; } else { $userlevel = 1; }
  if ( isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail']) && isset($_POST['pin']) ) {
-  if (!$frominstall && !strpos($_POST['mail'], '@')) { 
+  if (!$frominstall && !strpos($_POST['mail'], '@')) {
    echo("<p>Please type a valid mail address and try again.</p>
    </center>");
-   include ($path . "/footer.php");
-   die("");
+   require_once 'footer.php';
+   exit();
   }
 
-  include($path . "/connect.php");
-  
   $result = $server->query("SELECT * FROM " . $credentials["utable"] . " WHERE username=" . $server->quote($_POST['username']) . " ");
   $count = $result->rowCount();
-  if ($count > 0) 
-    { 
+  if ($count > 0)
+    {
 	  die("The user you're trying to register is already existing. Please go back and try again.");
 	}
   else
@@ -28,7 +24,7 @@
         die("The mail address you're trying to register is already existing. Please go back and try again.");
 	  } else {
        $server->query("INSERT INTO `" . $credentials["db"] . "`.`" . $credentials["utable"] . "` (`username`, `password`, `mail`, `pin`, `utype`) VALUES (" . $server->quote($_POST['username']) . ", " . $server->quote($_POST['password']) . ", " . $server->quote($_POST['mail']) . ", " . $server->quote($_POST['pin']) . ", " . $userlevel . ")");
-	   echo "<p>We're all set, you can now <a href='" . $fullpath . "/session/login.php' >login.</a><br><br>Please don't forget to remove the <b>install</b> directory from your server.";
+	   echo "<p>We're all set, you can now <a href='login.php' >login.</a><br><br>Please don't forget to remove the <b>install</b> directory from your server.";
 	  }
  	}
  } elseif ( isset($_POST['username']) || isset($_POST['password']) || isset($_POST['mail']) || isset($_POST['pin']) ) {
@@ -37,7 +33,7 @@
 	 ;
  } else {
   echo "
-  <form action='" . $fullpath . "/session/register.php' method='post' >
+  <form action='' method='post' >
    <table>
     <tr>
      <td><b>&#9656; Username: </b></td><td><input type=text name='username' placeholder='Username' maxlength=25 ></td>
@@ -57,5 +53,5 @@
   </center>
   ";
  }
- include ($path . "/footer.php");
+ require_once 'includes/footer.php';
 ?>
