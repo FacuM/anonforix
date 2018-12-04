@@ -1,12 +1,5 @@
 <?php
- // Measure the time from taken to process the scripts, as shown in PHP.net.
- function microtime_float()
- {
-    list($usec, $sec) = explode(" ", microtime());
-    return ((float)$usec + (float)$sec);
- }
 
- $time_start = microtime_float();
 
  // Edit these values with your MySQL server's credentials
 
@@ -18,15 +11,15 @@
  $pageinfo = array ('Anonforix', 'The non-JS forum!');
 
  $credentials = array (
-  'hostname'  	  => '127.0.0.1',
-  'port' 	        => '3306',
-  'username' 	    => 'root',
-  'password' 	    => '',
-  'db' 		        => 'anonforix_users',
-  'utable' 	      => 'anonforix_users',
-  'ttable' 	      => 'anonforix_threads',
-  'ptable' 	      => 'anonforix_posts',
-  'ftable' 	      => 'anonforix_forums'
+  'hostname'    => '127.0.0.1',
+  'port'        => '3306',
+  'username'    => 'pmauser',
+  'password'    => 'pmauser',
+  'db'          => 'anonforix',
+  'utable'      => 'anonforix_users',
+  'ttable'      => 'anonforix_threads',
+  'ptable'      => 'anonforix_posts',
+  'ftable'      => 'anonforix_forums'
  );
 
  // Delay for redirects (default 5 seconds)
@@ -48,6 +41,9 @@
   'menubg'	     	=> 'black'
  );
  // From here, don't touch anything, we'll try to get everything up
+
+ // Start counting render time
+ $time_start = microtime(true);
 
  // Set the full address for MySQL connection
  $serveraddress = $credentials["hostname"] . ":" . $credentials["port"];
