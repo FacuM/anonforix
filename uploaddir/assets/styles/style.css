@@ -39,6 +39,15 @@ footer p {
 
 /* Some custmizations, just meant to improve visuals */
 
+.logo {
+  font-family: "Times New Roman", times, serif;
+  font-weight: lighter;
+  font-size: 3.5em;
+  margin: 0;
+}
+
+.logo a { text-decoration: none; }
+
 a, a:link, a:visited, a:hover, a:active {
   color: white;
 }
