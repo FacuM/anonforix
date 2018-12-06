@@ -1,6 +1,5 @@
 <?php
- $protected = true;
- require_once 'includes/head.php';
+ $render = true; $protected = true; require_once 'includes/head.php';
  // Get the logged in user's level
  $query = "SELECT * FROM " . $credentials["utable"] . " WHERE username = " . $_SESSION['logged'];
  foreach ($server->query($query) as $users) {
@@ -51,6 +50,5 @@
     }
    }
  }
- echo "</center>";
  require_once 'includes/footer.php';
 ?>
