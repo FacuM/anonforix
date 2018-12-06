@@ -1,13 +1,11 @@
 <?php
 
-
  // Edit these values with your MySQL server's credentials
 
  // Wheter to show errors or not
  //error_reporting(E_ERROR | E_PARSE);
 
  // Page info
-
  $pageinfo = array ('Anonforix', 'The non-JS forum!');
 
  $credentials = array (
@@ -22,13 +20,17 @@
   'ftable'      => 'anonforix_forums'
  );
 
- // Here, you can customize the website's accent and background colours, so the next time anyone visits it, it'll be dinamically updated
-
+ // Here, you can customize the website's accent and background colours, so the next time anyone visits it, it'll be dinamically updated.
  $theme = array (
   'accent'		    => 'white',
   'background'		=> 'black',
   'menubg'	     	=> 'black'
  );
+
+ // Show Javascript status (ON/OFF)?
+ $show_js_status = true;
+
+
  // From here, don't touch anything, we'll try to get everything up
 
  // Start counting render time

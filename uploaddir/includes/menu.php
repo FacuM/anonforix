@@ -19,7 +19,15 @@
           </p>
          </td>
   	    </tr>
-     </table>
+     </table>' . ($show_js_status ? '
+     <p class="center">Javascript status:
+      <span id="js_status">
+      <!-- If JS disabled, this will output OFF.-->
+      <noscript>disabled.</noscript>
+      </span>
+     </p>
+     <!-- If JS enabled, this will output ON. -->
+     <script>document.getElementById("js_status").innerHTML = "enabled.";</script>' : '') . '
     <hr>
     ';
  }
