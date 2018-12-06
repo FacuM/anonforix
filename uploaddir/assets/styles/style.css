@@ -5,9 +5,7 @@
   src: url(../../assets/ubuntu-font-family-0.80/Ubuntu-R.ttf) format('truetype');
 }
 
-main * {
-  margin: 0 auto;
-}
+main * { margin: 0 auto; }
 
 main p, main .center {
   width: 100%;
@@ -20,9 +18,7 @@ main input[type=submit] {
   margin: 0 auto;
 }
 
-main table {
-  padding-bottom: 0.5rem;
-}
+main table { padding-bottom: 0.5rem; }
 
 footer {
   position: absolute;
@@ -33,9 +29,7 @@ footer {
   width: 100%;
 }
 
-footer p {
-  margin: 0.3rem;
-}
+footer p { margin: 0.3rem; }
 
 /* Some custmizations, just meant to improve visuals */
 
@@ -48,13 +42,9 @@ footer p {
 
 .logo a { text-decoration: none; }
 
-a, a:link, a:visited, a:hover, a:active {
-  color: white;
-}
+a, a:link, a:visited, a:hover, a:active { color: white; }
 
-.data, #thread_info, .right {
-  width: 90%;
-}
+.data, #thread_info, .right { width: 90%; }
 
 .data th, .data td {
   border: 0.1rem white solid;
@@ -70,22 +60,12 @@ a, a:link, a:visited, a:hover, a:active {
   text-decoration: underline;
 }
 
-.right .button {
-  float: right;
-}
+.right .button { float: right; }
 
-.right .button td {
-  padding-right: 0.5rem;
-}
+.right .button td { padding-right: 0.5rem; }
 
-textarea {
-  width: 100%;
-}
+textarea { width: 100%; }
 
-.has_columns td input {
-  width: 100%;
-}
+.has_columns td input { width: 100%; }
 
-.has_columns .info_column {
-  width: 15%;
-}
+.has_columns .info_column { width: 15%; }
