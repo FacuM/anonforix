@@ -1,10 +1,11 @@
 <?php
- $protected = true;
- require_once 'includes/head.php';
+ $render = true; $protected = true; require_once 'includes/head.php';
  $result = $server->query("SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = " . $_SESSION['logged']);
  foreach ($result as $row) {
 	 $level = $row['utype'];
  }
+ echo '
+ <div class="center">';
  if ($level >= 1) {
   echo "
   <h2>Level 1 - User</h2>
@@ -59,6 +60,7 @@
   }
  }
  }
- echo "</center>";
+ echo '
+ </div>';
  require_once 'includes/footer.php';
 ?>

@@ -1,8 +1,9 @@
 <?php
+ if (isset($render))
+ {
+   // NOTE: You can set your waiting time for each timed part of the script here.
 
- // NOTE: You can set your waiting time for each timed part of the script here.
-
- // Redirection time
- $redirt = 2;
-
+   // Redirection time
+   $redirt = 2;
+ }
 ?>
