@@ -40,7 +40,7 @@
         if ($famount > 0) {
          echo "You can't add a forum twice!";
         } else {
-         $faddq = "INSERT INTO `" . $credentials["ftable"] . "` (`fid`, `desc`, `threads`, `allowed`, `lastpid`) VALUES (" . $server->quote($_POST['fname']) . ",'No description given.','None'," . $_SESSION['logged'] . ",-1)";
+         $faddq = 'INSERT INTO ' . $credentials['ftable'] . ' (fid, name, description, allowed) VALUES (NULL, ' . $server->quote($_POST['fname']) . ', ' . $server->quote($_POST['fdesc']) . ', ' . $_SESSION['logged'] . ')';
          $server->query($faddq);
          echo "The forum " . $_POST['fname'] . " has been successfully added.";
         }

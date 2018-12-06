@@ -50,11 +50,16 @@
        </tr>
        <tr>
        <form action='do.php' method='post' >
-        <td><input type='text' name='fname' placeholder='New forum name...' ></td>
-	<td><input type='submit' name='submit' value='Add' ><input type='hidden' name='operation' value='add' ></td>
+        <td><input type='text' name='fname' placeholder='New forum name...'></td>
+        <td><input type='text' name='fdesc' placeholder='New forum description...'></td>
        </tr>
-      </table>
-     ";
+       <tr>
+      </tr>
+     </table>
+     <input type='submit' name='submit' value='Add'>
+     <input type='hidden' name='operation' value='add' >
+       </form>
+    ";
     }
    }
   }
