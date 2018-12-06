@@ -14,17 +14,18 @@ It's in a really early development stage, currently working features are present
 ### Features
 
  - Official favicon.
- - Forums support (WIP for backend and creation).
- - Threads support (WIP for backend and creation).
- - Posts support (WIP for security, backend and creation done).
- - Autoinstallation script with configuration checking (WIP).
+ - Forums support (WIP, unsafe, all public).
+ - Threads support.
+ - Posts support.
+ - Autoinstallation script with configuration checking.
  - Login and registration system.
  - Session and user registration control.
- - Basic theming support.
+ - Basic theming support (WIP).
+ - Display Javascript enabled/disabled status.
 
 ### See it in action!
 
-[Anonforix on Infinity Host](http://anonforix.infinityfreeapp.com)
+~~[Anonforix on Infinity Host](http://anonforix.infinityfreeapp.com)~~ (temporarily removed)
 
 ### Installation
 
@@ -38,11 +39,7 @@ It's in a really early development stage, currently working features are present
 
  - Now, move all the contents in 'uploaddir' to the root of your webserver.
 
- - Test with these credentials:
-
-  `Username: admin`
-  `Password: admin`
-  `Pin: 123456`
+ - Login with your credentials.
 
  - Good luck and enjoy this early alpha!
 
