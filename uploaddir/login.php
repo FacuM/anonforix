@@ -1,6 +1,6 @@
 <?php
  // Login script
- require_once 'includes/head.php';
+ $render = true; require_once 'includes/head.php';
  if ( isset($_POST['username']) && isset($_POST['password']) ) {
 	 session_start();
 	 $sql = "SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = " . $server->quote($_POST['username']) . " and `password` = " . $server->quote($_POST['password']) . " and `pin` = " . $server->quote($_POST['pin']);

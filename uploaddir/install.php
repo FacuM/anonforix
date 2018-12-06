@@ -1,7 +1,6 @@
 <?php
  // Installation script for Anonforix
- $pageinfo = array ('Anonforix', 'Installation');
- require_once 'includes/head.php';
+ $pageinfo = array ('Anonforix', 'Installation'); $render = true; require_once 'includes/head.php';
  if (isset($_POST['part']))
  {
    switch ($_POST['part']) {

@@ -1,5 +1,5 @@
 <?php
- $protected = true; require_once 'includes/head.php';
+ $render = true ;$protected = true; require_once 'includes/head.php';
  if (isset($_POST['tid']))
  {
    require_once 'includes/create_post.php';

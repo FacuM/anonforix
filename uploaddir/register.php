@@ -1,6 +1,5 @@
 <?php
- if (!isset($frominstall)) { $frominstall = false; }
- require_once 'includes/head.php';
+ if (!isset($frominstall)) { $frominstall = false; } $render = true; require_once 'includes/head.php';
  if ( isset($userlevel) ) { $userlevel = $userlevel; } else { $userlevel = 1; }
  if ( isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail']) && isset($_POST['pin']) ) {
   if (!$frominstall && !strpos($_POST['mail'], '@')) {

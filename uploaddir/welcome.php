@@ -1,6 +1,6 @@
 <?php
  // Welcome, part of "Login script"
- $protected = true; require_once 'includes/wait.php';
+ $render = true; $protected = true; require_once 'includes/wait.php';
  $custh = "<meta http-equiv='refresh' content='" . $redirt . "; url=index.php'>";
  require_once 'includes/head.php';
  echo "<p>Hey there! Welcome back <b>" . str_replace("'", "", $_SESSION['logged']) . "</b> we're glad to see you around.</p>
