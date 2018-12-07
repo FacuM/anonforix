@@ -68,3 +68,5 @@ textarea { width: 100%; }
 .has_columns td input, .has_columns td select { width: 100%; }
 
 .has_columns .info_column { width: 15%; }
+
+form table tr td { width: 12em; }
