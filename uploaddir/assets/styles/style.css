@@ -5,7 +5,7 @@
   src: url(../../assets/ubuntu-font-family-0.80/Ubuntu-R.ttf) format('truetype');
 }
 
-main * { margin: 0 auto; }
+main *, main input[type=submit] { margin: 0 auto; }
 
 main p, .center {
   width: 100%;
@@ -15,7 +15,6 @@ main p, .center {
 
 main input[type=submit] {
   display: block;
-  margin: 0 auto;
 }
 
 main table { padding-bottom: 0.5rem; }
