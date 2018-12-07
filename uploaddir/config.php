@@ -17,7 +17,8 @@
   'utable'      => 'anonforix_users',
   'ttable'      => 'anonforix_threads',
   'ptable'      => 'anonforix_posts',
-  'ftable'      => 'anonforix_forums'
+  'ftable'      => 'anonforix_forums',
+  'atable'      => 'anonforix_allowed'
  );
 
  // Here, you can customize the website's accent and background colours, so the next time anyone visits it, it'll be dinamically updated.

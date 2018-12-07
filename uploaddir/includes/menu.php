@@ -9,7 +9,7 @@
           <p align=right >';
      if (isset($_SESSION['logged']))
      {
-       echo '<a href="index.php">Home</a> | <a href="admin.php">Administration</a> | <a href="logout.php">Log out</a> - '. str_replace("'", "", $_SESSION['logged']) . '</p>';
+       echo '<a href="index.php">Home</a> | <a href="admin.php">Administration</a> | <a href="logout.php">Log out</a> - ' . $_SESSION['logged'] . '</p>';
      }
      else
      {

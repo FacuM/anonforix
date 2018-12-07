@@ -9,7 +9,7 @@
      $count = $result->rowCount();
 
      if($count > 0) {
-        $_SESSION['logged'] = $server->quote($_POST['username']);
+        $_SESSION['logged'] = $_POST['username'];
         header("location: welcome.php");
 	 } else {
     echo "

@@ -22,10 +22,7 @@
     <p>Nothing for now.</p>
     ";
     if ($level > 3) {
-     echo "
-     <h2>Level 4 - Administrator</h2>
-     <p>Nothing for now.</p>
-     ";
+      require_once 'admin/level4.php';
      if ($level > 4) {
        require_once 'admin/level5.php';
     }

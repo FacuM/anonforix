@@ -9,7 +9,7 @@
     ';
     foreach ($server->query('SELECT * FROM ' . $credentials['ftable']) as $forum)
     {
-      $allowed = '';
+      $permctl_mode = 'table_output'; include 'includes/permctl.php';
       $o .= '
       <tr>
        <td>

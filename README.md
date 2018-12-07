@@ -14,7 +14,7 @@ It's in a really early development stage, currently working features are present
 ### Features
 
  - Official favicon.
- - Forums support (WIP, unsafe, all public).
+ - Forums support.
  - Threads support.
  - Posts support.
  - Autoinstallation script with configuration checking.
