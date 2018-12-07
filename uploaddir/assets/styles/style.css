@@ -66,6 +66,6 @@ a, a:link, a:visited, a:hover, a:active { color: white; }
 
 textarea { width: 100%; }
 
-.has_columns td input { width: 100%; }
+.has_columns td input, .has_columns td select { width: 100%; }
 
 .has_columns .info_column { width: 15%; }
