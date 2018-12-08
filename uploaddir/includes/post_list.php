@@ -2,27 +2,36 @@
  if (isset($render))
  {
     $thread_title = $server->query('SELECT * FROM ' . $credentials['ttable'] . ' WHERE tid = ' . $server->quote($_GET['viewthread']))->fetch()['title'];
-    $o = '
-    <table id="thread_info">
-     <thead></thead>
-     <tbody>
-      <tr>
-       <td>Currently on "' . $thread_title . '"</td>
-      </tr>
-     </tbody>
-    </table>
-    ';
-    foreach ($server->query('SELECT * FROM ' . $credentials['ptable'] . ' WHERE tid = ' . $server->quote($_GET['viewthread'])) as $post)
+    $posts = $server->query('SELECT * FROM ' . $credentials['ptable'] . ' WHERE tid = ' . $server->quote($_GET['viewthread']));
+    $o = '';
+    if ($posts->rowCount() > 0)
     {
       $o .= '
-      <table class="data has_columns">
-        <thead>
-         <th class="info_column"> Title </th>  <th> Content </th>  <th> OP </th>
-        </thead>
+      <table id="thread_info">
+       <thead></thead>
+       <tbody>
         <tr>
-         <td class="info_column"> ' . $post['title'] . ' </td>  <td> ' . $post['content'] . ' </td>  <td class="info_column"> ' . $post['op'] . ' </td>
+         <td>Currently on "' . $thread_title . '"</td>
         </tr>
-      </table>';
+       </tbody>
+      </table>
+      ';
+      foreach ($posts as $post)
+      {
+        $o .= '
+        <table class="data has_columns">
+          <thead>
+           <th class="info_column"> Title </th>  <th> Content </th>  <th> OP </th>
+          </thead>
+          <tr>
+           <td class="info_column"> ' . $post['title'] . ' </td>  <td> ' . $post['content'] . ' </td>  <td class="info_column"> ' . $post['op'] . ' </td>
+          </tr>
+        </table>';
+      }
+    }
+    else
+    {
+      echo '<p>No posts found.</p>';
     }
     echo $o . '
     <div class="right">

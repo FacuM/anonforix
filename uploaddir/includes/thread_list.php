@@ -1,28 +1,37 @@
 <?php
  if (isset($render))
  {
-    $o = '
-    <table class="data">
-      <thead>
-       <th> Thread title </th>  <th> Creation date </th>  <th> Replies </th>  <th> Last post </th>
-      </thead>
-    ';
-    foreach ($server->query('SELECT * FROM ' . $credentials['ttable'] . ' WHERE fid = ' . $server->quote($_GET['viewforum'])) as $thread)
+    $threads = $server->query('SELECT * FROM ' . $credentials['ttable'] . ' WHERE fid = ' . $server->quote($_GET['viewforum']));
+    $o = '';
+    if ($threads->rowCount() > 0)
     {
-      // Set posts amount to zero by default (prevents undefined variable errors), then use a SQL query to count the matching entries. Finally, output the first index.
-      $posts_amount = 0; $posts_amount += $server->query('SELECT COUNT(pid) FROM ' . $credentials['ptable'] . ' WHERE tid = ' . $server->quote($thread['tid']))->fetch()[0];
-      // If there's at least one post, show it's title for the "Last post" field, else, show "No posts found."
-      $last_post = ($posts_amount > 0 ? $server->query('SELECT * FROM ' . $credentials['ptable'] . ' ORDER BY pid DESC LIMIT 1')->fetch()['title'] : 'No posts found.');
       $o .= '
-      <tr>
-       <td>
-        <form method="get">
-         <input type="hidden" name="viewforum" value="' . $thread['fid'] . '">
-         <input type="hidden" name="viewthread" value="' . $thread['tid'] . '">
-         <input class="index" type="submit" value="' . $thread['title'] . '">
-        </form>
-       </td>  <td> ' . $thread['date'] . ' </td>  <td> ' . $posts_amount .' </td>  <td> ' . $last_post . ' </td>
-      </tr>';
+      <table class="data">
+        <thead>
+         <th> Thread title </th>  <th> Creation date </th>  <th> Replies </th>  <th> Last post </th>
+        </thead>
+      ';
+      foreach ($threads as $thread)
+      {
+        // Set posts amount to zero by default (prevents undefined variable errors), then use a SQL query to count the matching entries. Finally, output the first index.
+        $posts_amount = 0; $posts_amount += $server->query('SELECT COUNT(pid) FROM ' . $credentials['ptable'] . ' WHERE tid = ' . $server->quote($thread['tid']))->fetch()[0];
+        // If there's at least one post, show it's title for the "Last post" field, else, show "No posts found."
+        $last_post = ($posts_amount > 0 ? $server->query('SELECT * FROM ' . $credentials['ptable'] . ' ORDER BY pid DESC LIMIT 1')->fetch()['title'] : 'No posts found.');
+        $o .= '
+        <tr>
+         <td>
+          <form method="get">
+           <input type="hidden" name="viewforum" value="' . $thread['fid'] . '">
+           <input type="hidden" name="viewthread" value="' . $thread['tid'] . '">
+           <input class="index" type="submit" value="' . $thread['title'] . '">
+          </form>
+         </td>  <td> ' . $thread['date'] . ' </td>  <td> ' . $posts_amount .' </td>  <td> ' . $last_post . ' </td>
+        </tr>';
+      }
+    }
+    else
+    {
+      echo '<p>No threads found.</p>';
     }
     echo $o . '
     </table>
