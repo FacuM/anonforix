@@ -7,7 +7,7 @@
     <table>
      <tr>
       <td>
-        <form action='do.php' method='post'>
+        <form class='process' action='do.php' method='post'>
            <table class='has_columns sm'>
             <tr>
               <td>
@@ -30,7 +30,7 @@
      </tr>
      <tr>
       <td>
-       <form action='do.php' method='post'>
+       <form class='process' action='do.php' method='post'>
          <table>
           <tr>
            <td>

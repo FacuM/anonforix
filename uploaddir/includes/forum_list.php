@@ -16,7 +16,7 @@
         $o .= '
         <tr>
          <td>
-          <form method="get">
+          <form class="process" method="get" action="">
            <input type="hidden" name="viewforum" value="' . $forum['fid'] . '">
            <input class="index" type="submit" value="' . $forum['name'] . '">
           </form>

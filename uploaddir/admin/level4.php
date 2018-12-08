@@ -56,7 +56,7 @@
    //////////////////////////////////////////////////
 
    $o = '
-   <form method="post" action="">
+   <form class="process" method="post" action="">
     <table>
      <tr>
       <td>

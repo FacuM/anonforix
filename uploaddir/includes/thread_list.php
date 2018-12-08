@@ -20,7 +20,7 @@
         $o .= '
         <tr>
          <td>
-          <form method="get">
+          <form class="process" method="get" action="">
            <input type="hidden" name="viewforum" value="' . $thread['fid'] . '">
            <input type="hidden" name="viewthread" value="' . $thread['tid'] . '">
            <input class="index" type="submit" value="' . $thread['title'] . '">

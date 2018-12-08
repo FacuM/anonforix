@@ -20,7 +20,7 @@
  } else {
 	 if (!isset($_SESSION['logged'])) {
       echo "
-  <form action='login.php' method='post' >
+  <form class='process' action='login.php' method='post' >
    <table>
     <tr>
      <td><b>&#9656; Username: </b>&nbsp;</td> <td><input type=text name='username' placeholder='Username' maxlength='25' ></td>

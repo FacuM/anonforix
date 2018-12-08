@@ -32,7 +32,7 @@
 	 ;
  } else {
   echo "
-  <form action='' method='post' >
+  <form class='register' action='' method='post' >
    <table>
     <tr>
      <td><b>&#9656; Username: </b></td><td><input type=text name='username' placeholder='Username' maxlength=25 ></td>

@@ -12,10 +12,10 @@
       }
       else
       {
-        $server->query('INSERT INTO ' . $credentials['ptable'] . ' (pid, tid, op, title, content) VALUES (NULL , ' . $server->quote($_POST['tid']) . ',  ' . $_SESSION['logged'] . ', ' . $server->quote($_POST['title']) . ',  ' . $server->quote($_POST['content']) . ')');
+        $server->query('INSERT INTO ' . $credentials['ptable'] . ' (pid, tid, op, title, content) VALUES (NULL , ' . $server->quote($_POST['tid']) . ',  \'' . $_SESSION['logged'] . '\', ' . $server->quote($_POST['title']) . ',  ' . $server->quote($_POST['content']) . ')');
         echo '
         <p>Success!</p>
-        <form method="get" action="index.php">
+        <form class="process" method="get" action="index.php">
          <p>
           <input type="hidden" name="viewforum" value="' . $forum_id . '">
           <input type="hidden" name="viewthread" value="' . $thread_info['tid'] .'">
@@ -27,7 +27,7 @@
     else
     {
      echo '
-     <form action="" method=post>
+     <form class="process" action="" method=post>
      <table class="data has_columns">
       <thead>
        <th>Title: </th>  <th> <input type="text" name="title" value="" placeholder="Title"> </th>

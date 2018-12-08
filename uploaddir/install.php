@@ -7,7 +7,7 @@
      case '1':
          echo "
          <h4>Step 1 - Registering the first administrator</h4>
-          <form method='post' action=''>
+          <form class='process' method='post' action=''>
            <input type='hidden' name='part' value='1-1'>
            <table>
             <tr>
@@ -34,7 +34,7 @@
           echo "
            <p>You must fill all the fields before you continue.</p>
            <p>Please go back and try again.</p>
-           <form method='post' action='' >
+           <form class='process' method='post' action='' >
               <input type='hidden' name='part' value='1'>
               <input type='submit' value='Go back' >
            </form>
@@ -44,14 +44,14 @@
            echo "
            <p>The PIN must be a numeric value.</p>
            <p>Please go back and try again.</p>
-           <form method='post' action='' >
+           <form class='process' method='post' action='' >
               <input type='hidden' name='part' value='1'>
               <input type='submit' value='Go back' >
            </form>
           </center>";
           } else {
            echo "
-           <form method='post' action='' >
+           <form class='process' method='post' action='' >
            <input type='hidden' name='part' value='2'>
            <p>Okay... this is what we've got: </p>
            <table>
@@ -75,7 +75,7 @@
               <input type='submit' value='Yes, lets do it!' >
              </td>
               </form>
-              <form method='post' action='' >
+              <form class='process' method='post' action='' >
              <td>
               <input type='hidden' name='part' value='1'>
               <input type='submit' value='Nope, give me another try.' >
@@ -102,12 +102,12 @@
              <table>
               <tr>
                   <td>
-              <form method='post' action='login.php' >
+              <form class='process' method='post' action='login.php' >
                 <input type='submit' value='Login' >
                 </form>
                 </td>
                <td>
-                   <form method='post' action='register.php' >
+                   <form class='process' method='post' action='register.php' >
                 <input type='submit' value='Register' >
                 </form>
              </td>
@@ -166,7 +166,7 @@
         } else {
             echo "<p><span style='color: yellow' ><b>Notice: </b></span> The table '" . $credentials["utable"] . "' has been successfully truncated.";
         }
-        echo '<form method="post" action="" width="100%" align="right" >
+        echo '<form class="process" method="post" action="" width="100%" align="right" >
           <input type="hidden" name="part" value="1">
          <input type="submit" value="Continue" >
         </form>';

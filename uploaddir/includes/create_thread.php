@@ -23,7 +23,7 @@
         $server->query('INSERT INTO ' . $credentials['ptable'] . ' (pid, tid, op, title, content) VALUES (NULL , ' . $last_thread['tid'] . ',  ' . $_SESSION['logged'] . ', ' . $server->quote($_POST['post_title']) . ',  ' . $server->quote($_POST['content']) . ')');
         echo '
         <p>Success!</p>
-        <form method="get" action="index.php">
+        <form class="process" method="get" action="index.php">
          <p>
           <input type="hidden" name="viewforum" value="' . $forum_info['fid'] . '">
           <button class="button" type="submit">Go back to "' . $forum_info['name'] . '"</button>
@@ -34,7 +34,7 @@
     else
     {
      echo '
-     <form action="" method=post>
+     <form class="process" action="" method=post>
      <table class="data has_columns">
       <thead></thead>
       <tbody>
