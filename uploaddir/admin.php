@@ -1,9 +1,6 @@
 <?php
  $render = true; $protected = true; require_once 'includes/head.php';
- $result = $server->query("SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = " . $_SESSION['logged']);
- foreach ($result as $row) {
-	 $level = $row['utype'];
- }
+ $level = $server->query("SELECT * FROM `" . $credentials["utable"] . "` WHERE `username` = '" . $_SESSION['logged'] . "'")->fetch()['utype'];
  echo '
  <div class="center">';
  if ($level >= 1) {
