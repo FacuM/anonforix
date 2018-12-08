@@ -21,10 +21,19 @@
         $o .= '
         <table class="data has_columns">
           <thead>
-           <th class="info_column"> Title </th>  <th> Content </th>  <th> OP </th>
+           <th class="info_column"> Information </th>  <th> Content </th>
           </thead>
           <tr>
-           <td class="info_column"> ' . $post['title'] . ' </td>  <td> ' . $post['content'] . ' </td>  <td class="info_column"> ' . $post['op'] . ' </td>
+           <td class="info_column">
+             <table class="post_info">
+              <tr>
+               <td> ' . $post['title'] . '
+              </tr>
+              <tr>
+               <td> from ' . (empty($post['op']) ? '<i>System message</i>' : $post['op']) . ' </td>
+              </tr>
+             </table>
+           </td>  <td> ' . $post['content'] . ' </td>
           </tr>
         </table>';
       }

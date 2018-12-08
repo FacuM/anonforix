@@ -63,11 +63,13 @@ a, a:link, a:visited, a:hover, a:active { color: white; }
 
 .right .button td { padding-right: 0.5rem; }
 
-textarea { width: 100%; }
+.post_info, textarea { width: 100%; }
 
 .has_columns td, .has_columns td input { width: 100%; }
 
-.has_columns .info_column { width: 15%; }
+.has_columns .info_column { width: 20%; }
+
+.post_info tr td { border: none; }
 
 .process table tr td { width: 12em; }
 
